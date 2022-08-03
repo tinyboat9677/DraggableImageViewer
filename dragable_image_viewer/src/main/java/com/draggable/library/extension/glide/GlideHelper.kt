@@ -100,6 +100,7 @@ object GlideHelper {
             val diskLruCache =
                 DiskLruCache.open(file, 1, 1, DiskCache.Factory.DEFAULT_DISK_CACHE_SIZE.toLong())
             val value = diskLruCache.get(safeKey)
+            diskLruCache.close()
             if (value != null && value.getFile(0).exists()) {
                 return true
             }
